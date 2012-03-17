@@ -1,0 +1,9 @@
+--- /etc/pam.d/sshd.orig	2011-12-22 00:52:18.788846080 +0800
++++ /etc/pam.d/sshd	2011-12-21 23:11:34.826993160 +0800
+@@ -1,5 +1,6 @@
+ #%PAM-1.0
+ auth	   required	pam_sepermit.so
++auth       sufficient   /lib/security/pam_radius_auth.so
+ auth       include      password-auth
+ account    required     pam_nologin.so
+ account    include      password-auth

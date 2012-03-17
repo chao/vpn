@@ -1,0 +1,106 @@
+--- ./default_sites	2011-12-23 14:27:47.867258274 +0800
++++ /usr/local/etc/raddb/sites-enabled/default	2011-12-23 14:35:55.162274792 +0800
+@@ -163,22 +163,22 @@
+ 	#  to read /etc/passwd or /etc/shadow directly, see the
+ 	#  passwd module in radiusd.conf.
+ 	#
+ #	unix
+ 
+ 	#
+ 	#  Read the 'users' file
+-	files
++#	files
+ 
+ 	#
+ 	#  Look in an SQL database.  The schema of the database
+ 	#  is meant to mirror the "users" file.
+ 	#
+ 	#  See "Authorization Queries" in sql.conf
+-#	sql
++	sql
+ 
+ 	#
+ 	#  If you are using /etc/smbpasswd, and are also doing
+ 	#  mschap authentication, the un-comment this line, and
+ 	#  configure the 'etc_smbpasswd' module, above.
+ #	etc_smbpasswd
+ 
+@@ -389,25 +389,25 @@
+ 	unix
+ 
+ 	#
+ 	#  For Simultaneous-Use tracking.
+ 	#
+ 	#  Due to packet losses in the network, the data here
+ 	#  may be incorrect.  There is little we can do about it.
+-	radutmp
++#	radutmp
+ #	sradutmp
+ 
+ 	#  Return an address to the IP Pool when we see a stop record.
+ #	main_pool
+ 
+ 	#
+ 	#  Log traffic to an SQL database.
+ 	#
+ 	#  See "Accounting queries" in sql.conf
+-#	sql
++	sql
+ 
+ 	#
+ 	#  If you receive stop packets with zero session length,
+ 	#  they will NOT be logged in the database.  The SQL module
+ 	#  will print a message (only in debugging mode), and will
+ 	#  return "noop".
+ 	#
+@@ -447,15 +447,15 @@
+ #  or rlm_sql module can handle this.
+ #  The rlm_sql module is *much* faster
+ session {
+ 	radutmp
+ 
+ 	#
+ 	#  See "Simultaneous Use Checking Queries" in sql.conf
+-#	sql
++	sql
+ }
+ 
+ 
+ #  Post-Authentication
+ #  Once we KNOW that the user has been authenticated, there are
+ #  additional steps we can take.
+ post-auth {
+@@ -468,15 +468,15 @@
+ 	#  section, above.
+ #	reply_log
+ 
+ 	#
+ 	#  After authenticating the user, do another SQL query.
+ 	#
+ 	#  See "Authentication Logging Queries" in sql.conf
+-#	sql
++	sql
+ 
+ 	#
+ 	#  Instead of sending the query to the SQL server,
+ 	#  write it into a log file.
+ 	#
+ #	sql_log
+ 
+@@ -556,15 +556,15 @@
+ 	#  post-auth section.
+ 	#
+ 	#  Add the ldap module name (or instance) if you have set 
+ 	#  'edir_account_policy_check = yes' in the ldap module configuration
+ 	#
+ 	Post-Auth-Type REJECT {
+ 		# log failed authentications in SQL, too.
+-#		sql
++		sql
+ 		attr_filter.access_reject
+ 	}
+ }
+ 
+ #
+ #  When the server decides to proxy a request to a home server,
+ #  the proxied request is first passed through the pre-proxy
